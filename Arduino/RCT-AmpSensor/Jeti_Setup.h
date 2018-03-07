@@ -17,7 +17,8 @@ if (EEPROM.read(0) != 1) {
   EEPROM.write(2, 0); // Sensor type, default is Not Set
   EEPROM.write(3, 0); // Voltage range, default is 14S 60V
   EEPROM.write(4, 100); // Calibration value for current, default is 100, displayed as 0 in Jetibox
-  EEPROM.put(10, 0);  // Saved capacity (mAh)
+  EEPROM.put(10, 1000); // Calibration value for current, default is 1000, displayed as 0 in Jetibox
+  EEPROM.put(20, 0);  // Saved capacity (mAh)
 }
 
 // Read settings
@@ -25,8 +26,9 @@ resetFunction = EEPROM.read(1);
 sensorType = EEPROM.read(2);
 voltageRange = EEPROM.read(3);
 curCalVal = EEPROM.read(4);
+EEPROM.get(10, voltCalVal);
 if (resetFunction == 1) {
-  EEPROM.get(10, uCapacity);
+  EEPROM.get(20, uCapacity);
 }
 
 // Running values
@@ -35,6 +37,7 @@ ACSoffset = ACSoffsetArray[sensorType];
 dividerR1 = R1[voltageRange];
 dividerR2 = R2[voltageRange];
 tempcurCalVal = curCalVal - 100;
+tempvoltCalVal = voltCalVal - 1000;
 
 // Calculate voltage divider
 divider = (float)dividerR2 / (dividerR1 + dividerR2);

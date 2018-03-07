@@ -5,7 +5,8 @@
 
 if (sensorType != 0) {
   // Calculate voltage (V)
-  uVoltage = (analogRead(analogInVolt) / 1023.0) * (5010 / 1000) / divider;
+  // ORG uVoltage = (analogRead(analogInVolt) / 1023.0) * (5010 / 1000) / divider;
+  uVoltage = (analogRead(analogInVolt) / 1023.0) * (5010 / 1000) / divider * (voltCalVal / 1000.0);
 
   // Calculate current (A)
   float mVoltCur = (analogRead(analogInCur) / 1023.0) * 5010; // mV
@@ -19,8 +20,10 @@ if (sensorType != 0) {
 
   // mAh calculation 2 times a second
   if (millis() > prevMillis + 500) {
+    tmpCap = 0;
     curMillis = millis() - prevMillis;
-    uCapacity = uCapacity + (uCurrent * 1000) * (curMillis / 3600000.0);
+    tmpCap = tmpCap + (uCurrent * 1000) * (curMillis / 3600000.0);
+    uCapacity = uCapacity + (long) tmpCap;
     prevMillis = millis();
   }
 
@@ -36,7 +39,7 @@ if (sensorType != 0) {
   // If reset-function is in use and if no current consumed for 15 seconds store consumed capacity once to EEPROM
   curTime = millis();
   if (resetFunction == 1 && currentActive == 0 && currentStored == 0 && curTime > resetTime) {
-    EEPROM.put(10, uCapacity);
+    EEPROM.put(20, uCapacity);
     currentStored = 1;
   }
 
@@ -46,7 +49,7 @@ if (sensorType != 0) {
     resetState = digitalRead(pinReset); // HIGH when open, LOW when closed to GND
     if (currentActive == 0 && resetState == LOW) {
       uCapacity = 0;
-      EEPROM.put(10, uCapacity);
+      EEPROM.put(20, uCapacity);
       currentStored = 1;
     }
   }

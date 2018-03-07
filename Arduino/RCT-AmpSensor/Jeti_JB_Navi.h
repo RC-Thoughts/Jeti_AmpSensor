@@ -16,14 +16,14 @@
 case 224 : // RIGHT
 if (current_screen != MAX_SCREEN)
 {
-  if (current_screen == 8) {
+  if (current_screen == 9) {
     EEPROM.write(0, 1); // Reset byte set to done
     EEPROM.write(1, resetFunction); // Reset-function, not in use = 0, in use = 1
     EEPROM.write(2, sensorType); // Sensor type, default is Not Set
     EEPROM.write(3, voltageRange); // Voltage range, default is 14S 60V
-    EEPROM.write(4, curCalVal); // Calibration value for current, default is 0
-    EEPROM.put(10, 0);  // Saved capacity (mAh)
-
+    EEPROM.write(4, curCalVal); // Calibration value for current, default is 100
+    EEPROM.put(10, voltCalVal); // Calibration value for voltage, default is 100
+    EEPROM.put(20, 0);  // Saved capacity (mAh)
     delay(200);
     resetSensor();
   } else {
@@ -54,6 +54,9 @@ if (current_screen == 5) {
   curCalVal++;
 }
 if (current_screen == 6) {
+  voltCalVal++;
+}
+if (current_screen == 7) {
   if (resetFunction == 0) {
     resetFunction = 1;
   } else {
@@ -75,6 +78,9 @@ if (current_screen == 5) {
   curCalVal--;
 }
 if (current_screen == 6) {
+  voltCalVal--;
+}
+if (current_screen == 7) {
   if (resetFunction == 0) {
     resetFunction = 1;
   } else {
@@ -84,7 +90,7 @@ if (current_screen == 6) {
 break;
 
 case 144 : // UP+DOWN
-if (current_screen == 7) {
+if (current_screen == 8) {
   EEPROM.write(0, 0); // Reset byte
   delay(200);
   resetSensor();

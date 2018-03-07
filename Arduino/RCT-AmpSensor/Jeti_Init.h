@@ -4,10 +4,10 @@
 
 // Jetibox start screen
 #define ABOUT_1 F(" RCT Jeti Tools")
-#define ABOUT_2 F(" AmpSensor v1.0")
+#define ABOUT_2 F(" AmpSensor 1.1")
 
 // Max screens in Jetibox
-#define MAX_SCREEN 9
+#define MAX_SCREEN 10
 
 // Sensor type selection
 enum sensorType {
@@ -112,6 +112,7 @@ int curCalVal = 0;
 int tempcurCalVal = 100;
 int voltCalVal = 0;
 int tempvoltCalVal = 100;
+static float tmpCap = 0;
 unsigned long prevMillis = 0; // Previous time in ms
 unsigned long curMillis = 0;  // Current time in ms
 

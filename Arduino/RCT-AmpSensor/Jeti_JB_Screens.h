@@ -111,7 +111,22 @@ case 5 : { // currentCalibration
   JB.JetiBox((char*)&msg_line1, (char*)&msg_line2);
   break;
 }
-case 6 : { // useReset
+case 6 : { // voltageCalibration
+  msg_line1[0] = 0; msg_line2[0] = 0;
+  strcat_P((char*)&msg_line1, (const char*)F("Voltage: "));
+  temp[0] = 0;
+  floatToString((char*)&temp, uVoltage, 2);
+  strcat((char*)&msg_line1, (char*)&temp);
+  strcat_P((char*)&msg_line1, (const char*)F("V"));
+  strcat_P((char*)&msg_line2, (const char*)F("Calibration: "));
+  temp[0] = 0;
+  tempvoltCalVal = voltCalVal - 1000;
+  floatToString((char*)&temp, tempvoltCalVal, 0);
+  strcat((char*)&msg_line2, (char*)&temp);
+  JB.JetiBox((char*)&msg_line1, (char*)&msg_line2);
+  break;
+}
+case 7 : { // useReset
   msg_line1[0] = 0; msg_line2[0] = 0;
   strcat_P((char*)&msg_line1, (const char*)F("Dig.Reset: "));
   if (resetFunction == 0) {
@@ -124,7 +139,7 @@ case 6 : { // useReset
   JB.JetiBox((char*)&msg_line1, (char*)&msg_line2);
   break;
 }
-case 7 : { // storeSettings
+case 8 : { // storeSettings
   msg_line1[0] = 0; msg_line2[0] = 0;
   strcat_P((char*)&msg_line1, (const char*)F("Reset or Save"));
   strcat_P((char*)&msg_line2, (const char*)F("Rst UpDn Save >"));

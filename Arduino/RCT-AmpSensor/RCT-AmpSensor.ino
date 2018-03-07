@@ -1,8 +1,8 @@
 /*
   -----------------------------------------------------------
-          RCT-Jeti Tools - Jeti AmpSensor v 1.0
+          RCT-Jeti Tools - Jeti AmpSensor v 1.1
   -----------------------------------------------------------
-  Tero Salminen RC-Thoughts.com (c) 2017 www.rc-thoughts.com
+  Tero Salminen RC-Thoughts.com (c) 2018 www.rc-thoughts.com
   -----------------------------------------------------------
 
   DIY current Sensor for Jeti with affordable sensor module
@@ -21,9 +21,12 @@
   with digital output from receiver.
 
           Note: Arduino Pro Mini 5V 16Mhz required! 
-          
+
+  Big thanks:
+  - JJ for extensive testing!
+  - Uwe for finding the cpacity-bug! (Tero was a n00b...)
   -----------------------------------------------------------
-  Shared under MIT-license by Tero Salminen (c) 2017
+  Shared under MIT-license by Tero Salminen (c) 2018
   -----------------------------------------------------------
 */
 
