@@ -4,7 +4,7 @@
 
 // Jetibox start screen
 #define ABOUT_1 F(" RCT Jeti Tools")
-#define ABOUT_2 F(" AmpSensor 1.1")
+#define ABOUT_2 F(" AmpSensor 1.2")
 
 // Max screens in Jetibox
 #define MAX_SCREEN 10
@@ -94,11 +94,12 @@ const int analogInVolt = A2;
 
 // Jeti values
 float uCurrent = 0;
-long uCapacity = 0;
+float uCapacity = 0; // was int
 float uVoltage = 0;
 long uPower = 0;
 long jetiCurrent = 0;
 long jetiVoltage = 0;
+long jetiCapacity = 0;
 
 // Voltage divider - Defaults to 14S / 60V
 int dividerR1;

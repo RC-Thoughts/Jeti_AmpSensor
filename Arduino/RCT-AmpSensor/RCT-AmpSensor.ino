@@ -1,6 +1,6 @@
 /*
   -----------------------------------------------------------
-          RCT-Jeti Tools - Jeti AmpSensor v 1.1
+          RCT-Jeti Tools - Jeti AmpSensor v 1.2
   -----------------------------------------------------------
   Tero Salminen RC-Thoughts.com (c) 2018 www.rc-thoughts.com
   -----------------------------------------------------------

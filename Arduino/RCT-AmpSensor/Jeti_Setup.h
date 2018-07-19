@@ -53,6 +53,6 @@ divider = (float)dividerR2 / (dividerR1 + dividerR2);
 */
 
 JB.setValue30(JB.addData(F("Current"), F("A")), &jetiCurrent, 1);
-JB.setValue30(JB.addData(F("Capacity"), F("mAh")), &uCapacity, 0);
+JB.setValue30(JB.addData(F("Capacity"), F("mAh")), &jetiCapacity, 0);
 JB.setValue30(JB.addData(F("Voltage"), F("V")), &jetiVoltage, 2);
 JB.setValue30(JB.addData(F("Power"), F("W")), &uPower, 0);

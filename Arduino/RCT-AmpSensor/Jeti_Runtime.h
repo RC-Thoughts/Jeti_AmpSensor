@@ -5,7 +5,6 @@
 
 if (sensorType != 0) {
   // Calculate voltage (V)
-  // ORG uVoltage = (analogRead(analogInVolt) / 1023.0) * (5010 / 1000) / divider;
   uVoltage = (analogRead(analogInVolt) / 1023.0) * (5010 / 1000) / divider * (voltCalVal / 1000.0);
 
   // Calculate current (A)
@@ -22,16 +21,16 @@ if (sensorType != 0) {
   if (millis() > prevMillis + 500) {
     tmpCap = 0;
     curMillis = millis() - prevMillis;
-    tmpCap = tmpCap + (uCurrent * 1000) * (curMillis / 3600000.0);
-    uCapacity = uCapacity + (long) tmpCap;
+    tmpCap = tmpCap + (uCurrent * 1000.0) * ((float)curMillis / 3600000.0);
+    uCapacity = uCapacity + tmpCap;
     prevMillis = millis();
   }
 
-  // If reset-function is in use and fuel is flowing monitor fuel-flow and set timer
-  if (resetFunction == 1 && uCurrent > 2) {
+  // If reset-function is in use set timer if current is over 1A
+  if (resetFunction == 1 && uCurrent > 1) {
     currentActive = 1;
     currentStored = 0;
-    resetTime = millis() + 15000; // If no current consumed 15 seconds timer to store value to EEPROM
+    resetTime = millis() + 15000;
   } else {
     currentActive = 0;
   }
@@ -39,7 +38,7 @@ if (sensorType != 0) {
   // If reset-function is in use and if no current consumed for 15 seconds store consumed capacity once to EEPROM
   curTime = millis();
   if (resetFunction == 1 && currentActive == 0 && currentStored == 0 && curTime > resetTime) {
-    EEPROM.put(20, uCapacity);
+    EEPROM.put(20, (int)uCapacity);
     currentStored = 1;
   }
 
@@ -49,7 +48,7 @@ if (sensorType != 0) {
     resetState = digitalRead(pinReset); // HIGH when open, LOW when closed to GND
     if (currentActive == 0 && resetState == LOW) {
       uCapacity = 0;
-      EEPROM.put(20, uCapacity);
+      EEPROM.put(20, (int)uCapacity);
       currentStored = 1;
     }
   }
@@ -62,3 +61,4 @@ else {
 }
 jetiVoltage = uVoltage * 100;
 jetiCurrent = uCurrent * 10;
+jetiCapacity = (long)uCapacity;

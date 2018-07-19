@@ -1,7 +1,6 @@
 //
 // Jetibox navigation and button actions
 //
-
 /*
   Button codes
   224  RIGHT
@@ -11,8 +10,6 @@
   144  UP & DOWN
   9    LEFT & RIGHT
 */
-
-
 case 224 : // RIGHT
 if (current_screen != MAX_SCREEN)
 {
