@@ -9,3 +9,7 @@
 2017-12-27  Tero Salminen  <tero@rc-thoughts.com>
 
     * v.1.0 First release
+    
+2018-07-19  Tero Salminen <tero@rc-thoughts.com>
+
+    * v.1.2 Improved small current measurement and accuracy
