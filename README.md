@@ -20,4 +20,4 @@ User calibratable for current measurement.
 
 More info: https://www.rc-thoughts.com/jeti-ampsensor/
 
-Shared under MIT-license by Tero Salminen (c) RC-Thoughts 2017
+Shared under MIT-license by Tero Salminen (c) RC-Thoughts 2017-2021
