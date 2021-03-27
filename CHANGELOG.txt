@@ -1,10 +1,10 @@
-------------------------------------------------------------
+------------------------------------------------------------------
                    RCT Amp Sensor
-------------------------------------------------------------
+------------------------------------------------------------------
 
- Tero Salminen RC-Thoughts.com (c) 2017 www.rc-thoughts.com
+ Tero Salminen RC-Thoughts.com (c) 2017-2021 www.rc-thoughts.com
 
-------------------------------------------------------------
+------------------------------------------------------------------
 
 2017-12-27  Tero Salminen  <tero@rc-thoughts.com>
 
@@ -13,3 +13,7 @@
 2018-07-19  Tero Salminen <tero@rc-thoughts.com>
 
     * v.1.2 Improved small current measurement and accuracy
+
+2021-03-27
+
+    * v.1.4 Corrected saved Capacity, added LED to indicate stored capacity
