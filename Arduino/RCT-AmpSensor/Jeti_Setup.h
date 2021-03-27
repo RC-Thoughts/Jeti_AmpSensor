@@ -9,6 +9,8 @@ JB.Init(F("RCT Amp"), JETI_RX, 9800);
 
 // Pinmode for reset
 pinMode(pinReset, INPUT_PULLUP);
+// Built-in LED
+pinMode(13, OUTPUT);
 
 // Calibration settings - Reset to defaults on first use of Arduino Pro Mini
 if (EEPROM.read(0) != 1) {
@@ -18,7 +20,7 @@ if (EEPROM.read(0) != 1) {
   EEPROM.write(3, 0); // Voltage range, default is 14S 60V
   EEPROM.write(4, 100); // Calibration value for current, default is 100, displayed as 0 in Jetibox
   EEPROM.put(10, 1000); // Calibration value for current, default is 1000, displayed as 0 in Jetibox
-  EEPROM.put(20, 0);  // Saved capacity (mAh)
+  writeEEPROM(20, 0);  // Saved capacity (mAh)
 }
 
 // Read settings
@@ -28,7 +30,20 @@ voltageRange = EEPROM.read(3);
 curCalVal = EEPROM.read(4);
 EEPROM.get(10, voltCalVal);
 if (resetFunction == 1) {
-  EEPROM.get(20, uCapacity);
+  uCapacity = readEEPROM(20);
+  if(uCapacity > 0){
+    digitalWrite(13, HIGH);   
+    delay(500);              
+    digitalWrite(13, LOW);
+    delay(500);
+    digitalWrite(13, HIGH);   
+    delay(500);              
+    digitalWrite(13, LOW);
+    delay(500);
+    digitalWrite(13, HIGH);   
+    delay(500);              
+    digitalWrite(13, LOW);
+    }
 }
 
 // Running values

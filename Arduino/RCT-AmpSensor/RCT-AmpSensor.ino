@@ -1,6 +1,6 @@
 /*
   -----------------------------------------------------------
-          RCT-Jeti Tools - Jeti AmpSensor v 1.2
+          RCT-Jeti Tools - Jeti AmpSensor v 1.4
   -----------------------------------------------------------
   Tero Salminen RC-Thoughts.com (c) 2018 www.rc-thoughts.com
   -----------------------------------------------------------
@@ -26,7 +26,7 @@
   - JJ for extensive testing!
   - Uwe for finding the cpacity-bug! (Tero was a n00b...)
   -----------------------------------------------------------
-  Shared under MIT-license by Tero Salminen (c) 2018
+  Shared under MIT-license by Tero Salminen (c) 2018-2021
   -----------------------------------------------------------
 */
 

@@ -4,7 +4,7 @@
 
 // Jetibox start screen
 #define ABOUT_1 F(" RCT Jeti Tools")
-#define ABOUT_2 F(" AmpSensor 1.2")
+#define ABOUT_2 F(" AmpSensor 1.4")
 
 // Max screens in Jetibox
 #define MAX_SCREEN 10
